@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Styles for the chessboard */
+      .chessboard {
+        display: flex;
+        flex-wrap: wrap;
+        width: 400px;
+        height: 400px;
+      }
+      .chessboard div {
+        width: 50px;
+        height: 50px;
+        border: 1px solid black;
+      }
+      /* Styles for the queens */
+      .queen {
+        background-color: rgb(245, 130, 193);
+      }
+    </style>
+  </head>
+  <body>
+    <button id="solveNQueens">Solve N-Queens</button>
+    <div id="solutions"></div>
+
+    <script src="script.js"></script>
+    <script>
+      document.getElementById("solveNQueens").addEventListener("click", function() {
+        let solutions = solveNQueens(8);
+        for (let solution of solutions) {
+          let chessboard = document.createElement("div");
+          chessboard.classList.add("chessboard");
+          for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 8; j++) {
+              let square = document.createElement("div");
+              if (solution[i][j] === 1) {
+                square.classList.add("queen");
+              }
+              chessboard.appendChild(square);
+            }
+          }
+          document.getElementById("solutions").appendChild(chessboard);
+        }
+      });
+    </script>
+  </body>
+</html>
